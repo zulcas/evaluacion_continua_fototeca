@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../views/partials/head.ejs') %>
+ 
+</head>
+<body>
+    
+    <%- include('../views/partials/nav'); %>
+
+    <h1 class="container">Añadir imagen a tu biblioteca</h1>
+
+    <form class="container" action="/add-image-form" method="POST">
+        <label for="title">Título Imagen (*)</label>
+        <p class="form-format">Máximo 30 caracteres. Formato válido: números, letras o '_'. </p>
+        <input type="text" name="title" id="title" maxlength=30 pattern="^[a-zA-Z0-9_ ]+$" placeholder="Título" required>
+
+        <label for="url">URL Imagen (*)</label>
+        <input type="url" name="url" id="url" placeholder="e.g., https://www.fototeca.com" required>
+
+        <label for="date">Fecha Imagen (*)</label>
+        <input type="date" name="date" id="date" max = "<%= today %>" required>
+
+        <input type="submit" value="Añadir">
+        <% if (imageExists) { %>
+            <!--Mostramos mensaje de error y desaparece a 4s-->
+            <p class="wrong-image-input">Error. La imagen ya existe en la base de datos. </p>   
+        <% } %>
+    
+
+        
+    </form>
+    
+</body>
+</html>

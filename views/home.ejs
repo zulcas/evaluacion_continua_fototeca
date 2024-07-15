@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include('../views/partials/head.ejs') %>
+
+</head>
+<body>
+  
+  <%- include('../views/partials/nav'); %>
+
+    <div class="container grid">
+      <% images.forEach(image => { %>
+          <article class="card">
+            <header class="card-image">
+              <img src="<%= image.url %>" alt="<%= image.title %>">
+            </header>
+            <div class="card-data">
+              <p class="card-data-color"><%= image.color %></p>
+              <p class="card-data-info"><%= image.title %></p>
+              <p class="card-data-date"><strong>Fecha: </strong><span class="card-data-info"><%= image.date %></span></p>   
+            </div>
+      
+          </article>
+      <% }) %>
+    </div>
+    <script>
+      function changeColor(color){
+        document.querySelector(".card-dataa-color").style.setProperty('--color-image', iamge.color);
+
+      }
+    </script>
+
+    
+</body>
+</html>

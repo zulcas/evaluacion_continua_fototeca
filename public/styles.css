@@ -1,0 +1,106 @@
+/*Application colors*/
+:root{
+    --neutral-color: #e8eff1; /*60%*/
+    --secondary-color: #2A46A4;  
+    --accent-color: #feba1e;
+    --comment-color: #646464;
+    --wrong-input: #E34850;
+    --correct-input: #28a745;
+    --color-image: #ffffff;
+}
+*{
+    box-sizing: border-box;
+}
+
+h1{
+    font-size: 1.5rem;
+}
+
+a:hover{
+    background-color: var(--secondary-color);
+    color: var(--neutral-color);
+    text-decoration: none;
+}
+
+.brand-name{
+    font-size: 20px;
+}
+header{
+    margin-top: 0px;
+}
+
+
+
+
+
+
+
+/*Partials nav.ejs*/
+.menu{
+    background-color: var(--neutral-color);
+    max-width: 100%;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
+
+
+
+/*Home view styles*/
+.menu__options{
+    gap: 0.5rem;
+}
+.card-data{
+    position: relative;
+}
+.card-image img{
+    aspect-ratio: 1/1;
+    width: 100%;
+    object-fit: cover;
+}
+.card-data-info{
+    text-transform: uppercase;
+}
+.card-data-color{
+    border: 1px solid var(--color-image);
+    position:absolute;
+    right: -0.8rem;
+    top: -0.8rem;
+    font-size: 0.6rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: var(--color-image);
+}
+
+
+
+
+/*Form view styles*/
+input[type=submit]{
+    background-color: var(--secondary-color);
+    border: none;
+}
+.wrong-image-input{
+    color: var(--wrong-input);
+    font-style: italic;
+    font-weight: bold;
+}
+label{
+    font-weight:500
+}
+.wrong-form-input:focus{
+    border: 3px solid var(--wrong-input);
+    box-shadow: none;
+    
+}
+.correct-form-input:focus{
+    border: 3px solid var(--correct-input);
+    box-shadow: none;
+    
+}
+.form-format{
+    color: var(--comment-color);
+    font-style: italic;
+}
+
+
