@@ -9,6 +9,9 @@ const app = express();
 //Hacemos accesible carpeta public
 app.use(express.static('public'));
 
+//Variable global para indicar puerto escucha
+const PORT = process.env.PORT || 3000 ; //variable de entorno PORT ofrecido por render en su documentacion
+
 //Middleware para indicar a express que procesamos peticiones tipo post (vienen codificadas desde cliente)
 app.use(express.urlencoded({extended:true}));
 
@@ -76,7 +79,7 @@ app.post('/add-image-form', async(req, res)=>{
 
 
 //Levantamos servidor
-app.listen(3000, (req, res)=>{
+app.listen(PORT, (req, res)=>{
     console.log("Servidor escuchando correctamente")
 })
 
