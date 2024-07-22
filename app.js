@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000 ; //variable de entorno PORT ofrecido por 
 app.use(express.urlencoded({extended:true}));
 
 //Base de datos de imagenes
-const images = [{ title: 'Cachorros Golden Retriever', url: 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg', date: '2024-03-03', color:'rgb(200, 232, 235)'},{ title: 'Crucero', url: 'https://images.pexels.com/photos/813011/pexels-photo-813011.jpeg', date: '2024-05-03', color:'rgb(200, 232, 235)' },{ title: 'Rosas Rojas', url: 'https://images.pexels.com/photos/196664/pexels-photo-196664.jpeg', date: '2024-01-07', color:'rgb(200, 232, 235)' },{ title: 'Hojas otoño',url:'https://images.pexels.com/photos/756903/pexels-photo-756903.jpeg', date: '2023-11-07', color:'rgb(200, 232, 235)' }];
+const images = [];
 
 //Uso EJS como motor plantillas
 app.set('view engine', 'ejs');
@@ -26,7 +26,6 @@ app.use(morgan('tiny'));
 
 //enpoint raiz (mostrar imágenes)
 app.get('/', (req, res)=>{
-    sortImagesByDate(images); //QUITAR AL FINAL PQ ESTÁ EN EL POST
     res.render('home', {
         images: images,
     });
@@ -38,6 +37,7 @@ app.get('/add-image-form', (req, res)=>{
         today: new Date().toISOString().split('T')[0], 
         imageExists: undefined
     });
+    
 })
 
 //endpoint POST formulario (leemos datos formulario y actualidamos nuestra base de datos - images)
@@ -59,9 +59,8 @@ app.post('/add-image-form', async(req, res)=>{
             images.push(req.body);
             //ordenar array images por data y se lo paso a la vista
             sortImagesByDate(images);
+            res.redirect('/add-image-form');
 
-        
-            
         }
         catch{
             const dominantColor = 'No disponible';
